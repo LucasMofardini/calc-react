@@ -1,0 +1,8 @@
+.container-calc{
+  width: 100%;
+  display: flex;
+}
+.container-calc Button{
+  margin: 0 10px;
+flex: 1;
+}
