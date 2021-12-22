@@ -33,18 +33,18 @@ function App() {
   return (
     <>
       <Container fixed>
-        <Typography className="titulo-main" variant="h1">Calculator made in ReactJS</Typography>
+        {/* <Typography className="titulo-main" variant="h1">{resultado}</Typography> */}
         <Box className="container-calc">
           <div className="linha-calc">
             <Button name="0" onClick={handleClick} variant="outlined">
               0
             </Button>
             <Button name="." onClick={handleClick} variant="outlined">
-              .
+              ∙
             </Button>
             <Button id="resultadoFinal" onClick={calcula}
               variant="contained" color="primary" className="btn-maior">
-              =
+              &#61;
             </Button>
           </div>
           <div className="linha-calc">
@@ -58,7 +58,7 @@ function App() {
               3
             </Button>
             <Button name="+" onClick={handleClick} variant="contained" color="primary">
-              +
+              &#43;
             </Button>
           </div>
           <div className="linha-calc">
@@ -72,7 +72,7 @@ function App() {
               6
             </Button>
             <Button name="-" onClick={handleClick} variant="contained" color="primary">
-              -
+              &#8722;
             </Button>
           </div>
           <div className="linha-calc">
@@ -86,7 +86,7 @@ function App() {
               9
             </Button>
             <Button name="*" onClick={handleClick} variant="contained" color="primary">
-              X
+              &#215;
             </Button>
           </div>
           <div className="linha-calc">
@@ -100,11 +100,11 @@ function App() {
               C
             </Button>
             <Button name="/" onClick={handleClick} variant="contained">
-              /
+              ∕
             </Button>
           </div>
           <div className="linha-calc">
-            <TextField fullWidth disabled id="fullWidth" value={resultado} id="input-resultado" />
+            <TextField fullWidth disabled value={resultado} id="input-resultado" />
           </div>
         </Box>
 

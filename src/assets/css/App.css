@@ -4,16 +4,15 @@ h1{
   white-space: normal;
 }
 .container-calc{
-  width: 50%;
-  margin: 100px auto;
+  width: 100%;
+  margin: 200px auto;
   display: flex;
   background-color: white;
-  flex-direction: column-reverse;
+  flex-direction: column-reverse; 
   border-radius: 10px;
 }
 .linha-calc{
   display: flex;
-
 }
 .container-calc Button{
 
@@ -28,7 +27,5 @@ h1{
 #input-resultado{
   font-size: 1.25rem;
   text-align: right;
-}
-#input-resultado::placeholder{
-  color: red;
+  margin: 0 10px;
 }
