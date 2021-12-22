@@ -4,8 +4,8 @@ h1{
   white-space: normal;
 }
 .container-calc{
-  width: 100%;
-  margin-top: 100px;
+  width: 50%;
+  margin: 100px auto;
   display: flex;
   background-color: white;
   flex-direction: column-reverse;
@@ -24,4 +24,11 @@ h1{
 
 .container-calc Button.btn-maior{
   width: calc(50% - calc(var(--margin-btn) * 2));
+}
+#input-resultado{
+  font-size: 1.25rem;
+  text-align: right;
+}
+#input-resultado::placeholder{
+  color: red;
 }

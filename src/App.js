@@ -1,109 +1,117 @@
 import { React, useState, useEffect } from 'react';
 import './assets/css/App.css';
 import { Button, Typography, Box, Container, TextField } from '@mui/material';
+import { mostraMensagemDeErro, tiraMensagemDeErro } from './controller/mensagemErro';
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [resultado, setResultado] = useState("");
+
   useEffect(() => {
-    document.title = `A resposta é ${count}`;
+    document.title = `A resposta é ${resultado}`;
   });
-  function apagarInput() {
-    setCount(0);
+
+  const handleClick = (e) => {
+    setResultado(resultado.concat(e.target.name));
+    tiraMensagemDeErro();
   }
-  const todosBtn = document.querySelectorAll('button');
-  todosBtn.forEach((btn) => {
-    if (btn.innerText >= 0 || btn.innerText == '.') {
-      btn.addEventListener('click', pegarValor(btn.innerText));
+  const apagarTudo = () => {
+    setResultado("");
+  }
+  const backSpace = () => {
+    setResultado(resultado.slice(0, -1));
+  }
+
+  const calcula = () => {
+    try {
+      setResultado(eval(resultado).toString());
+    } catch (error) {
+      setResultado("");
+      mostraMensagemDeErro();
     }
-  });
-  function pegarValor(valorBotao) {
-    console.log(valorBotao);
   }
+
   return (
     <>
       <Container fixed>
         <Typography className="titulo-main" variant="h1">Calculator made in ReactJS</Typography>
         <Box className="container-calc">
           <div className="linha-calc">
-            <Button variant="outlined">
+            <Button name="0" onClick={handleClick} variant="outlined">
               0
             </Button>
-            <Button variant="outlined">
+            <Button name="." onClick={handleClick} variant="outlined">
               .
             </Button>
-            <Button
-              onClick={() => {
-                setCount(count + 1);
-              }}
+            <Button id="resultadoFinal" onClick={calcula}
               variant="contained" color="primary" className="btn-maior">
               =
             </Button>
           </div>
           <div className="linha-calc">
-            <Button variant="outlined">
+            <Button name="1" onClick={handleClick} variant="outlined">
               1
             </Button>
-            <Button variant="outlined">
+            <Button name="2" onClick={handleClick} variant="outlined">
               2
             </Button>
-            <Button variant="outlined">
+            <Button name="3" onClick={handleClick} variant="outlined">
               3
             </Button>
-            <Button variant="contained" color="primary">
+            <Button name="+" onClick={handleClick} variant="contained" color="primary">
               +
             </Button>
           </div>
           <div className="linha-calc">
-            <Button variant="outlined">
+            <Button name="4" onClick={handleClick} variant="outlined">
               4
             </Button>
-            <Button variant="outlined">
+            <Button name="5" onClick={handleClick} variant="outlined">
               5
             </Button>
-            <Button variant="outlined">
+            <Button name="6" onClick={handleClick} variant="outlined">
               6
             </Button>
-            <Button variant="contained" color="primary">
+            <Button name="-" onClick={handleClick} variant="contained" color="primary">
               -
             </Button>
           </div>
           <div className="linha-calc">
-            <Button variant="outlined">
+            <Button name="7" onClick={handleClick} variant="outlined">
               7
             </Button>
-            <Button variant="outlined">
+            <Button name="8" onClick={handleClick} variant="outlined">
               8
             </Button>
-            <Button variant="outlined">
+            <Button name="9" onClick={handleClick} variant="outlined">
               9
             </Button>
-            <Button variant="contained" color="primary">
+            <Button name="*" onClick={handleClick} variant="contained" color="primary">
               X
             </Button>
           </div>
           <div className="linha-calc">
             <Button
-              onClick={() => {
-                apagarInput();
-              }}
-              variant="contained" className="btn-maior transparent">
+              id="apagarTudo"
+              onClick={apagarTudo}
+              variant="contained" className="btn-maior transparent" >
+              Clear
+            </Button>
+            <Button id="apagarUm" onClick={backSpace} variant="contained">
               C
             </Button>
-            <Button variant="contained">
-              %
-            </Button>
-            <Button variant="contained">
+            <Button name="/" onClick={handleClick} variant="contained">
               /
             </Button>
           </div>
           <div className="linha-calc">
-            <TextField fullWidth disabled id="fullWidth" value={count} />
+            <TextField fullWidth disabled id="fullWidth" value={resultado} id="input-resultado" />
           </div>
         </Box>
 
       </Container>
     </>
   );
+
 }
 
 export default App;
